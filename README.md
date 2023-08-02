@@ -1,5 +1,5 @@
 # Survey_gaps
-This repo contains the workflow developed to easely fill the survey haul gaps
+This repo contains the workflow developed to easily fill the survey haul gaps
 
 # Data preparation
 1) Build a csv file for each species on which you want to fill the missing hauls following this format:
@@ -35,7 +35,7 @@ e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
 	  
 5) Make a folder named "data" and move files "Genus_species.csv"(for each interested species), "missing_hauls.csv", "HaulData.csv" and "StrataWeight.csv" inside this folder:
 
-6) Download environmental variables for the interested years (monthy or daily etc...) in asc format (ALL THE VARIABLES NEED TO HAVE EQUAL RESOLUTION AND EXTENT)
+6) Download environmental variables for the interested years (monthly or daily etc...) in asc format (ALL THE VARIABLES NEED TO HAVE EQUAL RESOLUTION AND EXTENT)
    
    e.g.: "CHL_summer_2019.asc"
 
@@ -43,14 +43,14 @@ e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
    
    e.g.: "Environmental_inputs/MaxEnt_2019"
 
-8) Move the downloaded environmental variables in the correct folder
+8) Move the downloaded environmental variables to the correct folder
     
    e.g.: "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 
-9) Move the folder "Environmental_inputs" in the folder "data"
+9) Move the folder "Environmental_inputs" to the folder "data"
 
 # Directory content after data preparation
--Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs"containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
+-Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs" containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
 
 -Folder "R" containing: Code "BIMAC_no_advection.R" for BIMAC computations (DO NOT EDIT), code "Workflow_Surveygaps.R", code "Workflow_Surveygaps_Solemon.R" with species and year to be filled for Solemon survey
 
@@ -72,10 +72,10 @@ library(digest)
 library(sqldf)
 
 # Set inputs in "Workflow_Surveygaps.R"
--line 3: Feature selection = FALSE/TRUE: if FALSE MaxEnt run on all environmental variables. 
-                                         if TRUE MaxEnt select only the variables with a certain level of importance from the first run performig a second run only on these variables
+-line 3: Feature selection = FALSE/TRUE: if FALSE MaxEnt runs on all environmental variables. 
+                                         if TRUE MaxEnt select only the variables with a certain level of importance from the first run performingg a second run only on these variables
 					 
--line 4: generate vector with the name of the species to compute. The names of the species have to be the same of the name of the files in the folder "data"
+-line 4: generate a vector with the name of the species to compute. The terms of the species have to be the same as the name of the files in the folder "data"
          e.g.: folder= "data/Solea_solea.csv"
 		       vector= species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
 	 
@@ -84,20 +84,21 @@ library(sqldf)
 		       vector= years<-c(2019,2020,2021) 
 
 # Predetermined settings
--Code "BIMAC_no_advection.R": smooth=F, resolution=0.1, SD compuation= 0.1 (DO NOT EDIT for small basins like Adriatic Sea), alternative set for global computations: smooth = T and SD = 0.5
+-Code "BIMAC_no_advection.R": smooth=F, resolution=0.1, SD compuation= 0.1 (DO NOT EDIT for small basins like the Adriatic Sea), alternative set for global computations: smooth = T and SD = 0.5
 
 -Code "Workflow_Surveygaps.R": 
-   -line 99: if haul biomass < 5% of the highest haul biomass level registered in that species and year the haul will be rejected for MaxEnt computation (EDITABLE)
+      -line 99: if haul biomass < 5% of the highest haul biomass level registered in that species and year the haul will be rejected for MaxEnt computation (EDITABLE)
    
-   -line 146: if environmental variable x importance < 5% of the highest importance level among environmental variables the environmental variable will be rejected for second run maxent refine variables (EDITABLE)
+      -line 146: if environmental variable x importance < 5% of the highest importance level among environmental variables the environmental variable is 
+        rejected for second run maxent refine variables (EDITABLE)
    
-   -lines 66-68 and 261-262: if SSA <0 -> SSA = spatial result; SSA = 0 -> SSA = 0; SSA = NaN -> SSA = 0 (DO NOT EDIT)
+      -lines 66-68 and 261-262: if SSA <0 -> SSA = spatial result; SSA = 0 -> SSA = 0; SSA = NaN -> SSA = 0 (DO NOT EDIT)
    
-   -line 324: alpha = 1 (weight assign to the spatial component for HBIE computation) (EDITABLE)
+      -line 324: alpha = 1 (weight assigned to the spatial component for HBIE computation) (EDITABLE)
    
-   -line 325: beta = 1 (weight assign to the temporal component for HBIE computation) (EDITABLE)
+      -line 325: beta = 1 (weight assigned to the temporal component for HBIE computation) (EDITABLE)
    
-   -line 326: penalty = 0.4 (penalty assign to the HBIE biomass results in case of hauls with ecological values < percent omission rate (EDITABLE)
+      -line 326: penalty = 0.4 (penalty assign to the HBIE biomass results in case of hauls with ecological values < percent omission rate (EDITABLE)
 
 # Run code "Workflow_Surveygaps.R"
 
