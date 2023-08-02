@@ -39,9 +39,11 @@ e.g.: "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 9) Move the folder "Environmental_inputs" in the folder "data"
 
 #DIRECTORY CONTENT AFTER DATA PREPARATION
--Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs"containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
--Folder "R" containing: Code "BIMAC_no_advection.R" for BIMAC computations (DO NOT EDIT), code "Workflow_Surveygaps.R", code "Workflow_Surveygaps_Solemon.R" with species and year to be filled for Solemon survey
--Folder "java" containing: Code "max_ent_cyb.jar" for MaxEnt computations (DO NOT EDIT), code "ssa.jar" for SSA computations (DO NOT EDIT), folder "cfg" containing: "operators.xlm" for ssa computations (DO NOT EDIT)
+Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs"containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
+
+Folder "R" containing: Code "BIMAC_no_advection.R" for BIMAC computations (DO NOT EDIT), code "Workflow_Surveygaps.R", code "Workflow_Surveygaps_Solemon.R" with species and year to be filled for Solemon survey
+
+Folder "java" containing: Code "max_ent_cyb.jar" for MaxEnt computations (DO NOT EDIT), code "ssa.jar" for SSA computations (DO NOT EDIT), folder "cfg" containing: "operators.xlm" for ssa computations (DO NOT EDIT)
 
 #REQUIRED LIBRARIES:
 library(raster)
@@ -53,12 +55,12 @@ library(digest)
 library(sqldf)
 
 #SET INPUTS IN "Workflow_Surveygaps.R":
--line 3: Feature selection = FALSE/TRUE: if FALSE MaxEnt run on all environmental variables. 
+line 3: Feature selection = FALSE/TRUE: if FALSE MaxEnt run on all environmental variables. 
                                          if TRUE MaxEnt select only the variables with a certain level of importance from the first run performig a second run only on these variables
--line 4: generate vector with the name of the species to compute. The names of the species have to be the same of the name of the files in the folder "data"
+line 4: generate vector with the name of the species to compute. The names of the species have to be the same of the name of the files in the folder "data"
          e.g.: folder= "data/Solea_solea.csv"
 		       vector= species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
--line 5: generate vector with years. The years have to be the same as the Environmental_inputs subfolders
+line 5: generate vector with years. The years have to be the same as the Environmental_inputs subfolders
          e.g.: folder= "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 		       vector= years<-c(2019,2020,2021) 
 
