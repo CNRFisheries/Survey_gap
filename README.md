@@ -57,21 +57,28 @@ library(sqldf)
 # Set inputs in "Workflow_Surveygaps.R"
 -line 3: Feature selection = FALSE/TRUE: if FALSE MaxEnt run on all environmental variables. 
                                          if TRUE MaxEnt select only the variables with a certain level of importance from the first run performig a second run only on these variables
+					 
 -line 4: generate vector with the name of the species to compute. The names of the species have to be the same of the name of the files in the folder "data"
          e.g.: folder= "data/Solea_solea.csv"
 		       vector= species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
+	 
 -line 5: generate vector with years. The years have to be the same as the Environmental_inputs subfolders
          e.g.: folder= "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 		       vector= years<-c(2019,2020,2021) 
 
 # Predetermined settings
 -Code "BIMAC_no_advection.R": smooth=F, resolution=0.1, SD compuation= 0.1 (DO NOT EDIT for small basins like Adriatic Sea), alternative set for global computations: smooth = T and SD = 0.5
+
 -Code "Workflow_Surveygaps.R": 
    -line 99: if haul biomass < 5% of the highest haul biomass level registered in that species and year the haul will be rejected for MaxEnt computation (EDITABLE)
    -line 146: if environmental variable x importance < 5% of the highest importance level among environmental variables the environmental variable will be rejected for second run maxent refine variables (EDITABLE)
+   
    -lines 66-68 and 261-262: if SSA <0 -> SSA = spatial result; SSA = 0 -> SSA = 0; SSA = NaN -> SSA = 0 (DO NOT EDIT)
+   
    -line 324: alpha = 1 (weight assign to the spatial component for HBIE computation) (EDITABLE)
+   
    -line 325: beta = 1 (weight assign to the temporal component for HBIE computation) (EDITABLE)
+   
    -line 326: penalty = 0.4 (penalty assign to the HBIE biomass results in case of hauls with ecological values < percent omission rate (EDITABLE)
 
 # Run code "Workflow_Surveygaps.R"
