@@ -11,21 +11,26 @@ e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
    
       "station","year","lat,"lon"
    
-e.g.: "1","2005",44.55919167,12.33923333
+      e.g.: "1","2005",44.55919167,12.33923333
 
       name the csv = missing_hauls.csv
 	  
-4) Build a csv file with the swept area by haul and strata for all the hauls 
+3) Build a csv file with the swept area by haul and strata for all the hauls 
       "station","Stratum","year,"SweptArea"
+   
 e.g.: "1","STR1_17",2019,0.0124
       "1","STR1_17",2020,0.0127
       "2","STR1_17",2019,0.0186
       "2","STR1_17",2020,0.0181
+      
       name the csv = HaulData.csv
 
-5) Build a csv file with the strata weight in the area
+4) Build a csv file with the strata weight in the area
+   
       "Stratum","Area","StratumWeight"
+   
 e.g.: "STR1_17",11361,0.268023969
+
       name the csv = StrataWeight.csv
 	  
 6) Make a folder named "data" and move files "Genus_species.csv"(for each interested species), "missing_hauls.csv", "HaulData.csv" and "StrataWeight.csv" inside this folder:
