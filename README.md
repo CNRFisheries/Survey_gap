@@ -47,11 +47,17 @@ e.g.: "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 
 # Required libraries
 library(raster)
+
 library (R2jags)
+
 library (coda)
+
 library(plyr)
+
 library(dplyr)
+
 library(digest)
+
 library(sqldf)
 
 # Set inputs in "Workflow_Surveygaps.R"
