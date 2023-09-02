@@ -8,9 +8,9 @@ The tool take into account the spatial mobility of the species (how far can a po
 
 # Data preparation
  1.Build a csv file for each species on which you want to fill the missing hauls following this format:
-      *"station","lat,"lon","year","species","biomindex"
-      e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
-      name the csv = Genus_species.csv
+      * "station","lat,"lon","year","species","biomindex"
+       e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
+       name the csv = Genus_species.csv
 	  
 2) Build a csv file with a list of the missing hauls that have to be calculated following this format:
    
