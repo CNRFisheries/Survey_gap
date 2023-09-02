@@ -64,7 +64,7 @@ library(sqldf)
 * Feature selection = FALSE/TRUE:
   * if FALSE MaxEnt runs on all environmental variables. 
   * if TRUE MaxEnt select only the variables with a certain level of importance from the first run performingg a second run only on these variables
-    ```
+```
 feature_selection=T
 ```
 
