@@ -4,6 +4,7 @@
 ### A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella
 ## Description
 This repo contains the workflow developed to fill trawl survey haul gaps based on the paper: "Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M and Scarcella G (2022) Filling Gaps in Trawl Surveys at Sea through Spatiotemporal and Environmental Modelling. Front. Mar. Sci. 9:919339. doi: 10.3389/fmars.2022.919339". 
+
 The tool take into account the spatial mobility of the species (how far can a population go in one year and which is the mobility of the species?), the historical trends (what biomass do we expect in the missed hauls given the observation history?), the environmental aspect (how inter-annual bio-geo-chemical change affect the species distribution in the survey year?). In the present repo DIVA tool described in he aforementioned paper has been replaced by BIMAC.
 
 # Data preparation
