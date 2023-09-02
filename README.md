@@ -1,4 +1,6 @@
-# Survey_gaps
+***********************
+Survey gaps
+***********************
 This repo contains the workflow developed to easily fill the survey haul gaps
 
 # Data preparation
