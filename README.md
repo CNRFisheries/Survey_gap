@@ -10,8 +10,8 @@ The tool take into account the spatial mobility of the species throught BIMAC to
 # Installation
 * Download folder "R", "data" and "java" and store them in a unique folder.
 * In "data" replace files with your survey data following "Data preparation".
-* File "gebco_30sec_8.asc" contain world depth data needed for BIMAC computation, do not remove, move or change this file.
-* In the subfolder "Envirnmental inputs" replace environmental variables with your variable of interest for MaxEnt run
+* File "gebco_30sec_8.asc" contain world depth data needed for BIMAC computation. Do not remove, move or change this file.
+* In the subfolder "Envirnmental inputs" replace environmental variables with your variable of interest for MaxEnt tool
 
 # Data preparation
 1) Build a csv file for each species on which you want to fill the missing hauls following this format:
