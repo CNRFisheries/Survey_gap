@@ -7,7 +7,7 @@ This repo contains the workflow developed to fill trawl survey haul gaps based o
 The tool take into account the spatial mobility of the species (how far can a population go in one year and which is the mobility of the species?), the historical trends (what biomass do we expect in the missed hauls given the observation history?), the environmental aspect (how inter-annual bio-geo-chemical change affect the species distribution in the survey year?). In the present repo DIVA tool described in he aforementioned paper has been replaced by BIMAC.
 
 # Data preparation
- 1.Build a csv file for each species on which you want to fill the missing hauls following this format:
+1) Build a csv file for each species on which you want to fill the missing hauls following this format:
       * "station","lat,"lon","year","species","biomindex"
        e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
        name the csv = Genus_species.csv
