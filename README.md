@@ -8,7 +8,7 @@ The tool take into account the spatial mobility of the species (how far can a po
 
 # Data preparation
 1) Build a csv file for each species on which you want to fill the missing hauls following this format:
-* "station","lat,"lon","year","species","biomindex"
+      * "station","lat,"lon","year","species","biomindex"
       * e.g.: "1",44.55919167,12.33923333,"2005","MELIKER",35.23
       * name the csv = Genus_species.csv
 	  
@@ -17,36 +17,29 @@ The tool take into account the spatial mobility of the species (how far can a po
       * e.g.: "1","2005",44.55919167,12.33923333
       * name the csv = missing_hauls.csv
 	  
-3) Build a csv file with the swept area by haul and strata for all the hauls 
+3) Build a csv file with the swept area by haul and strata for all the hauls: 
       * "station","Stratum","year,"SweptArea"
       * e.g.: "1","STR1_17",2019,0.0124
             "1","STR1_17",2020,0.0127
             "2","STR1_17",2019,0.0186
             "2","STR1_17",2020,0.0181
-      
-      name the csv = HaulData.csv
+      * name the csv = HaulData.csv
 
 4) Build a csv file with the strata weight in the area
-   
-      "Stratum","Area","StratumWeight"
-   
-      e.g.: "STR1_17",11361,0.268023969
-
-      name the csv = StrataWeight.csv
+      * "Stratum","Area","StratumWeight"
+      * e.g.: "STR1_17",11361,0.268023969
+      * name the csv = StrataWeight.csv
 	  
 5) Make a folder named "data" and move files "Genus_species.csv"(for each interested species), "missing_hauls.csv", "HaulData.csv" and "StrataWeight.csv" inside this folder:
 
 6) Download environmental variables for the interested years (monthly or daily etc...) in asc format (ALL THE VARIABLES NEED TO HAVE EQUAL RESOLUTION AND EXTENT)
-   
-   e.g.: "CHL_summer_2019.asc"
+      * e.g.: "CHL_summer_2019.asc"
 
 7) Make a folder named "Environmental_inputs". Make subfolders named "MaxEnt_year" inside the folder "Environmental_inputs"
-   
-   e.g.: "Environmental_inputs/MaxEnt_2019"
+      * e.g.: "Environmental_inputs/MaxEnt_2019"
 
 8) Move the downloaded environmental variables to the correct folder
-    
-   e.g.: "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
+      * e.g.: "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
 
 9) Move the folder "Environmental_inputs" to the folder "data"
 
