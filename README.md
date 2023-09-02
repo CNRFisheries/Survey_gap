@@ -44,11 +44,11 @@ The tool take into account the spatial mobility of the species (how far can a po
 9) Move the folder "Environmental_inputs" to the folder "data"
 
 # Directory content after data preparation
--Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs" containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
+* Folder "data" containing: "missing_hauls.csv", "Genus_species.csv", "HaulData.csv", "StrataWeight.csv", folder "Environmental_inputs" containing the asc files of environmental variables to be used for MaxEnt run each year, file "gebco_30sec_8.asc": world depth data for BIMAC computations (DO NOT EDIT)
 
--Folder "R" containing: Code "BIMAC_no_advection.R" for BIMAC computations (DO NOT EDIT), code "Workflow_Surveygaps.R", code "Workflow_Surveygaps_Solemon.R" with species and year to be filled for Solemon survey
+* Folder "R" containing: Code "BIMAC_no_advection.R" for BIMAC computations (DO NOT EDIT), code "Workflow_Surveygaps.R", code "Workflow_Surveygaps_Solemon.R" with species and year to be filled for Solemon survey
 
--Folder "java" containing: Code "max_ent_cyb.jar" for MaxEnt computations (DO NOT EDIT), code "ssa.jar" for SSA computations (DO NOT EDIT), folder "cfg" containing: "operators.xlm" for ssa computations (DO NOT EDIT)
+* Folder "java" containing: Code "max_ent_cyb.jar" for MaxEnt computations (DO NOT EDIT), code "ssa.jar" for SSA computations (DO NOT EDIT), folder "cfg" containing: "operators.xlm" for ssa computations (DO NOT EDIT)
 
 # Required libraries
 library(raster)
