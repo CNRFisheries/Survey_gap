@@ -61,21 +61,24 @@ library(digest)
 library(sqldf)
 
 # Set inputs in "Workflow_Surveygaps.R"
-* Feature selection = FALSE/TRUE:
+* Line 3: feature selection = FALSE/TRUE:
   * if FALSE MaxEnt runs on all environmental variables. 
   * if TRUE MaxEnt select only the variables with a certain level of importance from the first run performingg a second run only on these variables
 ```
 feature_selection=T
 ```
-
-
-* line 4: generate a vector with the name of the species to compute. The terms of the species have to be the same as the name of the files in the folder "data"
-         e.g.: folder= "data/Solea_solea.csv"
-		       vector= species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
-* line 5: generate vector with years. The years have to be the same as the Environmental_inputs subfolders
-         e.g.: folder= "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
-		       vector= years<-c(2019,2020,2021) 
-
+* line 4: generate a vector with the name of the species to compute.
+  * The terms of the species have to be the same as the name of the files in the folder "data":
+  * e.g.: folder= "data/Solea_solea.csv"
+```
+species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
+```
+* line 5: generate vector with years.
+  * The years have to be the same as the Environmental_inputs subfolders
+  * e.g.: folder= "Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc"
+```
+years<-c(2019,2020,2021) 
+```
 # Predetermined settings
 -Code "BIMAC_no_advection.R": smooth=F, resolution=0.1, SD compuation= 0.1 (DO NOT EDIT for small basins like the Adriatic Sea), alternative set for global computations: smooth = T and SD = 0.5
 
