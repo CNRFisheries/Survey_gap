@@ -62,7 +62,7 @@ library(sqldf)
 
 # Set inputs in "Workflow_Surveygaps.R"
 * Feature selection = FALSE/TRUE:
-** if FALSE MaxEnt runs on all environmental variables. 
+ * if FALSE MaxEnt runs on all environmental variables. 
 **if TRUE MaxEnt select only the variables with a certain level of importance from the first run performingg a second run only on these variables 
 * line 4: generate a vector with the name of the species to compute. The terms of the species have to be the same as the name of the files in the folder "data"
          e.g.: folder= "data/Solea_solea.csv"
