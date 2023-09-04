@@ -2,7 +2,7 @@
 title: "Survey gaps"
 author: "Authors?"
 date: "2023-09-04"
-output: github_document
+output: md_document
 always_allow_html: true
 editor_options: 
   markdown: 
@@ -106,7 +106,7 @@ where:
 This file contains the information on the surveyed area. In case of missing haul use the swept area of the previous year:
 
 ```{r, include=T, echo=FALSE}
-head(data.frame(HaulData.csv))
+head(data.frame(HaulData))
 
 ```
 
@@ -125,7 +125,7 @@ where:
 This file contains information on the surveyed area:
 
 ```{r, include=T, echo=FALSE}
-head(data.frame(StrataWeight.csv))
+head(data.frame(StrataWeight))
 
 ```
 

@@ -1,8 +1,3 @@
-Survey gaps
-================
-Authors?
-2023-09-04
-
 ## Overview
 
 This repo contains the workflow developed to fill trawl survey haul gaps
@@ -11,34 +6,37 @@ and Scarcella G (2022) Filling Gaps in Trawl Surveys at Sea through
 Spatiotemporal and Environmental Modelling. Front. Mar. Sci. 9:919339.
 doi: 10.3389/fmars.2022.919339”.
 
-The tool take into account the spatial mobility of the species throught
-BIMAC tool written(how far can a population go in one year and which is
-the mobility of the species?), the historical trends through SSA tool
-(what biomass do we expect in the missed hauls given the observation
+The tool take into account the spatial mobility of the species through
+BIMAC tool (how far can a population go in one year and which is the
+mobility of the species?), the historical trends through SSA tool (what
+biomass do we expect in the missed hauls given the observation
 history?), the environmental aspect through MaxEnt tool (how
 inter-annual bio-geo-chemical change affect the species distribution in
-the survey year?). In the present repo DIVA tool described in he
-aforementioned paper has been replaced by BIMAC.
+the survey year?). Finally through the HBIE tool, each of the three
+aforementioned steps are weighted and gather to obtain the final result.
+In the present repo DIVA tool described in he aforementioned paper has
+been replaced by BIMAC.
 
 # Installation
 
-- Download folder “R”, “data” and “java” and store them in a unique
-  folder.
+-   Download folder “R”, “data” and “java” and store them in a unique
+    folder.
 
-## Folders content (provided at installation)
+## Data folders content (provided at installation)
 
-- Solea_solea.csv: example of input data
-- gebco_30sec_8.asc: world depth data needed for BIMAC computation. Do
-  not remove, move or change this file.
-- Subfolder “Envirnmental inputs”: contains environmental variables of
-  interest for MaxEnt tool. Data provided refers to the Adriatic Sea
+-   Solea\_solea.csv; HaulData.csv; StrataWeight.csv: example of input
+    data
+-   gebco\_30sec\_8.asc: world depth data needed for BIMAC computation.
+    Do not remove, move or change this file.
+-   Subfolder “Envirnmental inputs”: contains environmental variables of
+    interest for MaxEnt tool. Data provided refers to the Adriatic Sea
 
 ## Data preparation guideline
 
-To apply “Survey_gap” to your own case study you need to provide
+To apply “Survey\_gap” to your own case study you need to provide
 following input files:
 
-### Genus_species.csv
+### Genus\_species.csv
 
 This file contains the available information regarding your target
 species abundance and biomass for your study area. The file needs to
@@ -54,119 +52,232 @@ have the following structure:
 
 where:
 
-- station: identifier of the survey station. Needs to be consistent over
-  the years.
+-   station: identifier of the survey station. Needs to be consistent
+    over the years.
 
-- lat: ….
+-   lat: Latitude of the station in decimal degree
 
-- year:
+-   lon: Longitude of the station in decimal degree
 
-…
+-   year: year of the survey during which the station was carried out
 
-2)  Build a csv file with a list of the missing hauls that have to be
-    calculated following this format:
-    - “station”,“year”,“lat,”lon”
-    - e.g.: “1”,“2005”,44.55919167,12.33923333
-    - name the csv = missing_hauls.csv
-3)  Build a csv file with the swept area by haul and strata for all the
-    hauls:
-    - “station”,“Stratum”,“year,”SweptArea”
-    - e.g.: “1”,“STR1_17”,2019,0.0124 “1”,“STR1_17”,2020,0.0127
-      “2”,“STR1_17”,2019,0.0186 “2”,“STR1_17”,2020,0.0181
-    - name the csv = HaulData.csv
-4)  Build a csv file with the strata weight in the area
-    - “Stratum”,“Area”,“StratumWeight”
-    - e.g.: “STR1_17”,11361,0.268023969
-    - name the csv = StrataWeight.csv
-5)  Make a folder named “data” and move files “Genus_species.csv”(for
-    each interested species), “missing_hauls.csv”, “HaulData.csv” and
-    “StrataWeight.csv” inside this folder:
-6)  Download environmental variables for the interested years (monthly
-    or daily etc…) in asc format (ALL THE VARIABLES NEED TO HAVE EQUAL
-    RESOLUTION AND EXTENT)
-    - e.g.: “CHL_summer_2019.asc”
-7)  Make a folder named “Environmental_inputs”. Make subfolders named
-    “MaxEnt_year” inside the folder “Environmental_inputs”
-    - e.g.: “Environmental_inputs/MaxEnt_2019”
-8)  Move the downloaded environmental variables to the correct folder
-    - e.g.: “Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc”
-9)  Move the folder “Environmental_inputs” to the folder “data”
+-   species: name of the species in the preferred format. Needs to be
+    consistent over the years
+
+-   biomindex: biomass index of the station for the interested species
+
+### missing\_hauls.csv
+
+This file contains a list of missing hauls that have to be computed with
+relative information. The file needs to have the following structure:
+
+    ##   station year      lat      lon
+    ## 1       4 2022 45.09887 12.38338
+    ## 2       5 2022 45.15225 12.50874
+    ## 3       6 2022 45.25585 12.87548
+    ## 4      10 2020 45.09946 13.25025
+    ## 5      10 2022 45.09946 13.25025
+    ## 6      14 2022 44.73999 13.08566
+
+where:
+
+-   station: identifier of the survey station. Needs to be consistent
+    over the years.
+
+-   year: year of the survey during which the station was carried out.
+
+-   lat: Latitude of the station in decimal degree
+
+-   lon: Longitude of the station in decimal degree
+
+### HaulData.csv
+
+This file contains the information on the surveyed area. In case of
+missing haul use the swept area of the previous year:
+
+    ##   Station Stratum year  SweptArea
+    ## 1       1 STR1_17 2019 0.03599334
+    ## 2       1 STR1_17 2020 0.02437610
+    ## 3       1 STR1_17 2021 0.02349296
+    ## 4       1 STR1_17 2022 0.02925132
+    ## 5      10 STR2_17 2019 0.03656774
+    ## 6      10 STR2_17 2020 0.03656774
+
+where:
+
+-   Station: identifier of the survey station. Needs to be consistent
+    over the years and includes all the station (missing and not missing
+    station)
+
+-   Stratum: identifier of the stratum used for the computation of total
+    biomass index of the area.
+
+-   year: year of the survey during which the station was carried out.
+    Need to include the interested year to be filled
+
+-   SweptArea: Swept area of the station in nm2
+
+### StrataWeight.csv
+
+This file contains information on the surveyed area:
+
+    ##    Stratum  Area StratumWeight
+    ## 1  STR1_17 11361   0.268023969
+    ## 2  STR2_17  8410   0.198405209
+    ## 3  STR3_17 22466   0.530008493
+    ## 4 STR1_SLO   151   0.003562329
+
+where:
+
+-   Stratum: identifier of the stratum used for the computation of total
+    biomass index of the area.
+
+-   Area: Total area covered by each statum in nm2
+
+-   StratumWeight: Weight of the stratum on the total surveyd area
+
+### Environmental\_inputs/variable.asc
+
+Download the raster layer file in asc format of the interested
+environmental variables:
+
+    ##            1         2         3         4         5         6         7
+    ## 1         NA        NA        NA        NA        NA        NA        NA
+    ## 2         NA        NA        NA        NA        NA 0.3571303 0.3275829
+    ## 3         NA        NA        NA 0.4100096 0.3727627 0.3131888 0.2605357
+    ## 4         NA 0.5278887 0.4521504 0.3670816 0.2999293 0.2466989 0.2129933
+    ## 5  0.6281053 0.5507973 0.3928404 0.2796727 0.2383853 0.2186371 0.2056990
+    ## 6  0.7750720 0.6094998 0.3925024 0.2695370 0.2414952 0.2330638 0.2263396
+    ## 7         NA 0.7572239 0.5369453 0.3741204 0.3118363 0.2832875 0.2697312
+    ## 8         NA        NA 0.7217675 0.6173192 0.4812652 0.3740655 0.3183495
+    ## 9         NA        NA 1.1843615 0.8171226 0.6092055 0.4413580 0.3293392
+    ## 10 1.9023403 1.5170109 0.9227595 0.7211673 0.5773040 0.4180491 0.2881048
+    ##            8         9        10        11        12         13        14
+    ## 1         NA        NA 0.3778360 0.3642117        NA 0.29353559 0.2814722
+    ## 2  0.2734011 0.2493080 0.2782385 0.2499041 0.2034301 0.18954992 0.2050904
+    ## 3  0.2213961 0.1925389 0.1782477 0.1599235 0.1415365 0.13839088        NA
+    ## 4  0.1907711 0.1774113 0.1694480 0.1567162 0.1424684 0.13248047        NA
+    ## 5  0.1954958 0.1904794 0.1831382 0.1694365 0.1530065 0.13775611        NA
+    ## 6  0.2204139 0.2112434 0.1944607 0.1744659 0.1557369 0.13731483        NA
+    ## 7  0.2518665 0.2263726 0.1929361 0.1627345 0.1440033 0.12913613 0.1172576
+    ## 8  0.2695169 0.2184501 0.1724046 0.1402283 0.1272029 0.11738839 0.1105228
+    ## 9  0.2474165 0.1844187 0.1420508 0.1192505 0.1108688 0.10523679 0.1021336
+    ## 10 0.2017244 0.1489750 0.1246744 0.1086271 0.0999753 0.09423658 0.0924265
+    ##            15         16         17         18         19         20
+    ## 1  0.26235393         NA         NA         NA         NA         NA
+    ## 2  0.21940364         NA         NA         NA         NA         NA
+    ## 3          NA         NA         NA         NA         NA         NA
+    ## 4          NA         NA         NA         NA         NA         NA
+    ## 5          NA         NA         NA         NA         NA         NA
+    ## 6          NA         NA         NA         NA         NA 0.07716765
+    ## 7          NA         NA         NA         NA         NA 0.09092680
+    ## 8  0.10219493         NA         NA         NA         NA 0.08775543
+    ## 9  0.09902937 0.09241491         NA 0.08147497 0.08392087 0.08477256
+    ## 10 0.09231476 0.09056097 0.08469907 0.07934242 0.08213522 0.08132850
+
+    ## class      : RasterLayer 
+    ## dimensions : 39, 62, 2418  (nrow, ncol, ncell)
+    ## resolution : 0.1, 0.1  (x, y)
+    ## extent     : 12.3, 18.5, 41.9, 45.8  (xmin, xmax, ymin, ymax)
+    ## crs        : +proj=longlat +datum=WGS84 +no_defs 
+    ## source     : CHL_summer_2019.asc 
+    ## names      : CHL_summer_2019
+
+where:
+
+-   variable is a matrix containing the values of environmental variable
+    for each cell of the map . 0 values have to be set = -9999 in asc
+    format in order to obtain NA.
+
+-   dimensions: identifier of matrix size. nrow, ncol and ncell need to
+    be the same for all the variables
+
+-   resolution: identifier the resolution of the map determining the
+    number of cells
+
+-   extent: extent of the map in longitude and latitude. need to be the
+    same for all the variables
 
 ## Required data and folder after data preparation
 
-- Folder “data” containing: “missing_hauls.csv”, “Genus_species.csv”,
-  “HaulData.csv”, “StrataWeight.csv”,
-- Subfolder “Environmental_inputs” containing the asc files of
-  environmental variables to be used for MaxEnt run each year, file
-  “gebco_30sec_8.asc”: world depth data for BIMAC computations (DO NOT
-  EDIT)
-- Folder “R” containing: Code “BIMAC_no_advection.R” for BIMAC
-  computations (DO NOT EDIT), code “Workflow_Surveygaps.R”, code
-  “Workflow_Surveygaps_Solemon.R” with species and year to be filled for
-  Solemon survey
-- Folder “java” containing: Code “max_ent_cyb.jar” for MaxEnt
-  computations (DO NOT EDIT), code “ssa.jar” for SSA computations (DO
-  NOT EDIT), folder “cfg” containing: “operators.xlm” for ssa
-  computations (DO NOT EDIT)
+-   Folder “data” containing: “missing\_hauls.csv”,
+    “Genus\_species.csv”, “HaulData.csv”, “StrataWeight.csv”,
+-   Subfolder “Environmental\_inputs” containing the asc files of
+    environmental variables to be used for MaxEnt run each year, file
+    “gebco\_30sec\_8.asc”: world depth data for BIMAC computations (DO
+    NOT EDIT)
+-   Folder “R” containing: Code “BIMAC\_no\_advection.R” for BIMAC
+    computations (DO NOT EDIT), code “Workflow\_Surveygaps.R”, code
+    “Workflow\_Surveygaps\_Solemon.R” with species and year to be filled
+    for Solemon survey
+-   Folder “java” containing: Code “max\_ent\_cyb.jar” for MaxEnt
+    computations (DO NOT EDIT), code “ssa.jar” for SSA computations (DO
+    NOT EDIT), folder “cfg” containing: “operators.xlm” for ssa
+    computations (DO NOT EDIT)
 
 # Executing code
 
-Run “Workflow_Surveygaps.R” in RStudio
+Run “Workflow\_Surveygaps.R” in RStudio
 
 ## Install and load required libraries
 
 library(raster) library (R2jags) library (coda) library(plyr)
 library(dplyr) library(digest) library(sqldf)
 
-## Set inputs in “Workflow_Surveygaps.R”
+## Set inputs in “Workflow\_Surveygaps.R”
 
-- Line 3: feature selection = FALSE/TRUE:
+-   Line 3: feature selection = FALSE/TRUE:
 
-  - if FALSE MaxEnt runs on all environmental variables.
-  - if TRUE MaxEnt select only the variables with a certain level of
-    importance from the first run performingg a second run only on these
-    variables
+        # feature_selection=T
 
-  <!-- -->
+    -   if FALSE MaxEnt runs on all environmental variables.
+    -   if TRUE MaxEnt select only the variables with a certain level of
+        importance from the first run performingg a second run only on
+        these variables
 
-      feature_selection=T
+-   line 4: generate a vector with the name of the species to compute.
 
-- line 4: generate a vector with the name of the species to compute.
+<!-- -->
 
-  - The terms of the species have to be the same as the name of the
-    files in the folder “data”:
-  - e.g.: folder= “data/Solea_solea.csv”
+    ## [1] "Solea_solea"          "Sepia_officinalis"    "Melicertus_keraturus"
+    ## [4] "Squilla_mantis"       "Pecten_jacobeus"
 
-  <!-- -->
+    -   The terms of the species have to be consistent  with the file names in folder "data":
 
-      species<-c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus") 
+-   line 5: generate vector with years.
 
-- line 5: generate vector with years.
+<!-- -->
 
-  - The years have to be the same as the Environmental_inputs subfolders
-  - e.g.: folder= “Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc”
+    ## [1] 2019 2020 2021
 
-  <!-- -->
+    -   The years have to be consistent with Environmental_inputs subfolders
 
-      years<-c(2019,2020,2021) 
+# Processing
 
-  # Predetermined settings
+README WORK IN PROGRESS
 
-- Code “BIMAC_no_advection.R”: smooth=F, resolution=0.1, SD compuation=
-  0.1 (DO NOT EDIT for small basins like the Adriatic Sea), alternative
-  set for global computations: smooth = T and SD = 0.5
+## Tools computation
 
-- Code “Workflow_Surveygaps.R”: \* line 99: if haul biomass \< 5% of the
-  highest haul biomass level registered in that species and year the
-  haul will be rejected for MaxEnt computation (EDITABLE)
+This step applies functions to compute SSA, BIMAC and MaxEnt storing
+results for HBIE computation - Inputs are stored in folders named
+“toolname\_input” by species and year - Output are stored in folders
+named “toolname\_output” by species and year
 
-      * line 146: if environmental variable x importance < 5% of the highest importance level among environmental variables the environmental variable is 
-        rejected for second run maxent refine variables (EDITABLE)
+## HBIE computation
 
-      * lines 66-68 and 261-262: if SSA <0 -> SSA = spatial result; SSA = 0 -> SSA = 0; SSA = NaN -> SSA = 0 (DO NOT EDIT)
+This step put together the temporal (SSA), spatial (BIMAC) and
+ecological (MaxEnt) results giving the estimation of mean, low and high
+biomass index of missing hauls. - Inputs are stored in folder named
+“hbie\_input” by species and year - Output are stored in folder named
+“hbie\_output” by species and year. The output csv file contain the
+final biomass index results per station in the column
+“biomass\_est\_mean”.
 
-      * line 324: alpha = 1 (weight assigned to the spatial component for HBIE computation) (EDITABLE)
+## Biomass computation
 
-      * line 325: beta = 1 (weight assigned to the temporal component for HBIE computation) (EDITABLE)
+This step compute the total biomass index of the surveyed area including
+the reconstructed missing hauls. - Inputs are stored in folder named
+“biom\_index\_input” by species and year - Output are stored in folder
+named “biom\_index\_output” by species and year.
 
-      * line 326: penalty = 0.4 (penalty assign to the HBIE biomass results in case of hauls with ecological values < percent omission rate (EDITABLE)
+README WORK IN PROGRESS
