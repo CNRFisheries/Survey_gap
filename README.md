@@ -1,7 +1,7 @@
 Survey gaps
 ================
-Authors?
-2023-09-04
+A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella
+2023
 
 ## Overview
 
@@ -189,18 +189,18 @@ environmental variables:
 
 where:
 
-- variable is a matrix containing the values of environmental variable
-  for each cell of the map . 0 values have to be set = -9999 in asc
-  format in order to obtain NA.
+- file variable.asc is a matrix containing the values of environmental
+  variable for each cell on the map. 0 values have to be set = -9999 in
+  asc format in order to obtain NA.
 
 - dimensions: identifier of matrix size. nrow, ncol and ncell need to be
-  the same for all the variables
+  consistent across all the environmental variables
 
 - resolution: identifier the resolution of the map determining the
   number of cells
 
-- extent: extent of the map in longitude and latitude. need to be the
-  same for all the variables
+- extent: extent of the map in longitude and latitude. Need to be
+  consistent across all the environmental variables
 
 ## Required data and folder after data preparation
 
@@ -234,10 +234,12 @@ library(dplyr) library(digest) library(sqldf)
 
       # feature_selection=T
 
-  - if FALSE MaxEnt runs on all environmental variables.
-  - if TRUE MaxEnt select only the variables with a certain level of
-    importance from the first run performingg a second run only on these
-    variables
+  - if FALSE all the environmental variables stored in the subfolder are
+    used during MaxEnt computation.
+  - if TRUE only the environmental variables with a certain level of
+    importance (set at the 95% interval of the highest importance level
+    among environmental variables) after the first run are included in
+    MaxEnt computation
 
 - line 4: generate a vector with the name of the species to compute.
 
@@ -260,18 +262,22 @@ library(dplyr) library(digest) library(sqldf)
 
 README WORK IN PROGRESS
 
-## Tools computation
+## SSA, BIMAC and MaxEnt computation
 
-This step applies functions to compute SSA, BIMAC and MaxEnt storing
-results for HBIE computation - Inputs are stored in folders named
-“toolname_input” by species and year - Output are stored in folders
-named “toolname_output” by species and year
+In this step several functions are applied to compute temporal, spatial
+and ecological tools. The results are stored for HBIE computation
+
+- Inputs are stored in folders named “toolname_input” by species and
+  year
+
+- Output are stored in folders named “toolname_output” by species and
+  year
 
 ## HBIE computation
 
-This step put together the temporal (SSA), spatial (BIMAC) and
-ecological (MaxEnt) results giving the estimation of mean, low and high
-biomass index of missing hauls.
+In this step the temporal (SSA), spatial (BIMAC) and ecological (MaxEnt)
+results are pulled together and weighted to give the estimation of mean,
+low and high biomass index of missing hauls.
 
 - Inputs are stored in folder named “hbie_input” by species and year
 
@@ -281,8 +287,8 @@ biomass index of missing hauls.
 
 ## Biomass computation
 
-This step compute the total biomass index of the surveyed area including
-the reconstructed missing hauls.
+In this step the total biomass index of the surveyed area is computed
+from the whole hauls including the filled missing hauls.
 
 - Inputs are stored in folder named “biom_index_input” by species and
   year
