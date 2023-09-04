@@ -2,7 +2,7 @@
 title: "Survey gaps"
 author: "Authors?"
 date: "2023-09-04"
-output: md_document
+output: github_document
 always_allow_html: true
 editor_options: 
   markdown: 
@@ -139,7 +139,7 @@ where:
 
 ### Environmental_inputs/variable.asc
 
-Download the raster layer file in asc format of the interested environmental variables:
+Download the raster layer file in asc format for the interested environmental variables:
 
 ```{r, include=T, echo=FALSE}
 head(variable)
@@ -203,7 +203,8 @@ library(dplyr) library(digest) library(sqldf)
 species
 
 ```
-    -   The terms of the species have to be consistent  with the file names in folder "data":
+    
+    -   Terms of the species have to be consistent  with the file names in folder "data":
 
 -   line 5: generate vector with years.
 
@@ -212,7 +213,7 @@ years
 
 ```
 
-    -   The years have to be consistent with Environmental_inputs subfolders
+    -   Years have to be consistent with Environmental_inputs subfolders
 
 # Processing
 README WORK IN PROGRESS
@@ -224,12 +225,16 @@ This step applies functions to compute SSA, BIMAC and MaxEnt storing results for
 
 ## HBIE computation
 This step put together the temporal (SSA), spatial (BIMAC) and ecological (MaxEnt) results giving the estimation of mean, low and high  biomass index of missing hauls.
-- Inputs are stored in folder named "hbie_input" by species and year 
-- Output are stored in folder named "hbie_output" by species and year. The output csv file contain the final biomass index results per station in the column "biomass_est_mean".
+
+ - Inputs are stored in folder named "hbie_input" by species and year 
+ 
+ - Output are stored in folder named "hbie_output" by species and year. The output csv file contain the final biomass index results per station in the column "biomass_est_mean".
 
 ## Biomass computation
 This step compute the total biomass index of the surveyed area including the reconstructed missing hauls.
-- Inputs are stored in folder named "biom_index_input" by species and year 
-- Output are stored in folder named "biom_index_output" by species and year.
+
+ - Inputs are stored in folder named "biom_index_input" by species and year 
+ 
+ - Output are stored in folder named "biom_index_output" by species and year.
 
 README WORK IN PROGRESS

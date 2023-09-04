@@ -1,3 +1,8 @@
+Survey gaps
+================
+Authors?
+2023-09-04
+
 ## Overview
 
 This repo contains the workflow developed to fill trawl survey haul gaps
@@ -19,24 +24,23 @@ been replaced by BIMAC.
 
 # Installation
 
--   Download folder “R”, “data” and “java” and store them in a unique
-    folder.
+- Download folder “R”, “data” and “java” and store them in a unique
+  folder.
 
 ## Data folders content (provided at installation)
 
--   Solea\_solea.csv; HaulData.csv; StrataWeight.csv: example of input
-    data
--   gebco\_30sec\_8.asc: world depth data needed for BIMAC computation.
-    Do not remove, move or change this file.
--   Subfolder “Envirnmental inputs”: contains environmental variables of
-    interest for MaxEnt tool. Data provided refers to the Adriatic Sea
+- Solea_solea.csv; HaulData.csv; StrataWeight.csv: example of input data
+- gebco_30sec_8.asc: world depth data needed for BIMAC computation. Do
+  not remove, move or change this file.
+- Subfolder “Envirnmental inputs”: contains environmental variables of
+  interest for MaxEnt tool. Data provided refers to the Adriatic Sea
 
 ## Data preparation guideline
 
-To apply “Survey\_gap” to your own case study you need to provide
+To apply “Survey_gap” to your own case study you need to provide
 following input files:
 
-### Genus\_species.csv
+### Genus_species.csv
 
 This file contains the available information regarding your target
 species abundance and biomass for your study area. The file needs to
@@ -52,21 +56,21 @@ have the following structure:
 
 where:
 
--   station: identifier of the survey station. Needs to be consistent
-    over the years.
+- station: identifier of the survey station. Needs to be consistent over
+  the years.
 
--   lat: Latitude of the station in decimal degree
+- lat: Latitude of the station in decimal degree
 
--   lon: Longitude of the station in decimal degree
+- lon: Longitude of the station in decimal degree
 
--   year: year of the survey during which the station was carried out
+- year: year of the survey during which the station was carried out
 
--   species: name of the species in the preferred format. Needs to be
-    consistent over the years
+- species: name of the species in the preferred format. Needs to be
+  consistent over the years
 
--   biomindex: biomass index of the station for the interested species
+- biomindex: biomass index of the station for the interested species
 
-### missing\_hauls.csv
+### missing_hauls.csv
 
 This file contains a list of missing hauls that have to be computed with
 relative information. The file needs to have the following structure:
@@ -81,14 +85,14 @@ relative information. The file needs to have the following structure:
 
 where:
 
--   station: identifier of the survey station. Needs to be consistent
-    over the years.
+- station: identifier of the survey station. Needs to be consistent over
+  the years.
 
--   year: year of the survey during which the station was carried out.
+- year: year of the survey during which the station was carried out.
 
--   lat: Latitude of the station in decimal degree
+- lat: Latitude of the station in decimal degree
 
--   lon: Longitude of the station in decimal degree
+- lon: Longitude of the station in decimal degree
 
 ### HaulData.csv
 
@@ -105,17 +109,17 @@ missing haul use the swept area of the previous year:
 
 where:
 
--   Station: identifier of the survey station. Needs to be consistent
-    over the years and includes all the station (missing and not missing
-    station)
+- Station: identifier of the survey station. Needs to be consistent over
+  the years and includes all the station (missing and not missing
+  station)
 
--   Stratum: identifier of the stratum used for the computation of total
-    biomass index of the area.
+- Stratum: identifier of the stratum used for the computation of total
+  biomass index of the area.
 
--   year: year of the survey during which the station was carried out.
-    Need to include the interested year to be filled
+- year: year of the survey during which the station was carried out.
+  Need to include the interested year to be filled
 
--   SweptArea: Swept area of the station in nm2
+- SweptArea: Swept area of the station in nm2
 
 ### StrataWeight.csv
 
@@ -129,16 +133,16 @@ This file contains information on the surveyed area:
 
 where:
 
--   Stratum: identifier of the stratum used for the computation of total
-    biomass index of the area.
+- Stratum: identifier of the stratum used for the computation of total
+  biomass index of the area.
 
--   Area: Total area covered by each statum in nm2
+- Area: Total area covered by each statum in nm2
 
--   StratumWeight: Weight of the stratum on the total surveyd area
+- StratumWeight: Weight of the stratum on the total surveyd area
 
-### Environmental\_inputs/variable.asc
+### Environmental_inputs/variable.asc
 
-Download the raster layer file in asc format of the interested
+Download the raster layer file in asc format for the interested
 environmental variables:
 
     ##            1         2         3         4         5         6         7
@@ -185,72 +189,72 @@ environmental variables:
 
 where:
 
--   variable is a matrix containing the values of environmental variable
-    for each cell of the map . 0 values have to be set = -9999 in asc
-    format in order to obtain NA.
+- variable is a matrix containing the values of environmental variable
+  for each cell of the map . 0 values have to be set = -9999 in asc
+  format in order to obtain NA.
 
--   dimensions: identifier of matrix size. nrow, ncol and ncell need to
-    be the same for all the variables
+- dimensions: identifier of matrix size. nrow, ncol and ncell need to be
+  the same for all the variables
 
--   resolution: identifier the resolution of the map determining the
-    number of cells
+- resolution: identifier the resolution of the map determining the
+  number of cells
 
--   extent: extent of the map in longitude and latitude. need to be the
-    same for all the variables
+- extent: extent of the map in longitude and latitude. need to be the
+  same for all the variables
 
 ## Required data and folder after data preparation
 
--   Folder “data” containing: “missing\_hauls.csv”,
-    “Genus\_species.csv”, “HaulData.csv”, “StrataWeight.csv”,
--   Subfolder “Environmental\_inputs” containing the asc files of
-    environmental variables to be used for MaxEnt run each year, file
-    “gebco\_30sec\_8.asc”: world depth data for BIMAC computations (DO
-    NOT EDIT)
--   Folder “R” containing: Code “BIMAC\_no\_advection.R” for BIMAC
-    computations (DO NOT EDIT), code “Workflow\_Surveygaps.R”, code
-    “Workflow\_Surveygaps\_Solemon.R” with species and year to be filled
-    for Solemon survey
--   Folder “java” containing: Code “max\_ent\_cyb.jar” for MaxEnt
-    computations (DO NOT EDIT), code “ssa.jar” for SSA computations (DO
-    NOT EDIT), folder “cfg” containing: “operators.xlm” for ssa
-    computations (DO NOT EDIT)
+- Folder “data” containing: “missing_hauls.csv”, “Genus_species.csv”,
+  “HaulData.csv”, “StrataWeight.csv”,
+- Subfolder “Environmental_inputs” containing the asc files of
+  environmental variables to be used for MaxEnt run each year, file
+  “gebco_30sec_8.asc”: world depth data for BIMAC computations (DO NOT
+  EDIT)
+- Folder “R” containing: Code “BIMAC_no_advection.R” for BIMAC
+  computations (DO NOT EDIT), code “Workflow_Surveygaps.R”, code
+  “Workflow_Surveygaps_Solemon.R” with species and year to be filled for
+  Solemon survey
+- Folder “java” containing: Code “max_ent_cyb.jar” for MaxEnt
+  computations (DO NOT EDIT), code “ssa.jar” for SSA computations (DO
+  NOT EDIT), folder “cfg” containing: “operators.xlm” for ssa
+  computations (DO NOT EDIT)
 
 # Executing code
 
-Run “Workflow\_Surveygaps.R” in RStudio
+Run “Workflow_Surveygaps.R” in RStudio
 
 ## Install and load required libraries
 
 library(raster) library (R2jags) library (coda) library(plyr)
 library(dplyr) library(digest) library(sqldf)
 
-## Set inputs in “Workflow\_Surveygaps.R”
+## Set inputs in “Workflow_Surveygaps.R”
 
--   Line 3: feature selection = FALSE/TRUE:
+- Line 3: feature selection = FALSE/TRUE:
 
-        # feature_selection=T
+      # feature_selection=T
 
-    -   if FALSE MaxEnt runs on all environmental variables.
-    -   if TRUE MaxEnt select only the variables with a certain level of
-        importance from the first run performingg a second run only on
-        these variables
+  - if FALSE MaxEnt runs on all environmental variables.
+  - if TRUE MaxEnt select only the variables with a certain level of
+    importance from the first run performingg a second run only on these
+    variables
 
--   line 4: generate a vector with the name of the species to compute.
+- line 4: generate a vector with the name of the species to compute.
 
 <!-- -->
 
     ## [1] "Solea_solea"          "Sepia_officinalis"    "Melicertus_keraturus"
     ## [4] "Squilla_mantis"       "Pecten_jacobeus"
 
-    -   The terms of the species have to be consistent  with the file names in folder "data":
+    -   Terms of the species have to be consistent  with the file names in folder "data":
 
--   line 5: generate vector with years.
+- line 5: generate vector with years.
 
 <!-- -->
 
     ## [1] 2019 2020 2021
 
-    -   The years have to be consistent with Environmental_inputs subfolders
+    -   Years have to be consistent with Environmental_inputs subfolders
 
 # Processing
 
@@ -260,24 +264,30 @@ README WORK IN PROGRESS
 
 This step applies functions to compute SSA, BIMAC and MaxEnt storing
 results for HBIE computation - Inputs are stored in folders named
-“toolname\_input” by species and year - Output are stored in folders
-named “toolname\_output” by species and year
+“toolname_input” by species and year - Output are stored in folders
+named “toolname_output” by species and year
 
 ## HBIE computation
 
 This step put together the temporal (SSA), spatial (BIMAC) and
 ecological (MaxEnt) results giving the estimation of mean, low and high
-biomass index of missing hauls. - Inputs are stored in folder named
-“hbie\_input” by species and year - Output are stored in folder named
-“hbie\_output” by species and year. The output csv file contain the
-final biomass index results per station in the column
-“biomass\_est\_mean”.
+biomass index of missing hauls.
+
+- Inputs are stored in folder named “hbie_input” by species and year
+
+- Output are stored in folder named “hbie_output” by species and year.
+  The output csv file contain the final biomass index results per
+  station in the column “biomass_est_mean”.
 
 ## Biomass computation
 
 This step compute the total biomass index of the surveyed area including
-the reconstructed missing hauls. - Inputs are stored in folder named
-“biom\_index\_input” by species and year - Output are stored in folder
-named “biom\_index\_output” by species and year.
+the reconstructed missing hauls.
+
+- Inputs are stored in folder named “biom_index_input” by species and
+  year
+
+- Output are stored in folder named “biom_index_output” by species and
+  year.
 
 README WORK IN PROGRESS
