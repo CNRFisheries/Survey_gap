@@ -227,7 +227,9 @@ where:
 # Executing code
 
 Open “Workflow_Surveygaps.R” in RStudio and set working directory to
-“source file location”
+“source file location”. In “Workflow_Surveygaps_Solemon.R”, data are
+already selected for the unusable years (2005 and 2006) and hauls (“ms”
+and “bis”)
 
 ## Install and load required libraries
 
