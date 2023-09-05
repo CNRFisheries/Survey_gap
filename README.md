@@ -1,6 +1,6 @@
 Survey gaps
 ================
-A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella
+A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella,
 2023
 
 ## Overview
@@ -17,10 +17,10 @@ mobility of the species?), the historical trends through SSA tool (what
 biomass do we expect in the missed hauls given the observation
 history?), the environmental aspect through MaxEnt tool (how
 inter-annual bio-geo-chemical change affect the species distribution in
-the survey year?). Finally through the HBIE tool, each of the three
-aforementioned steps are weighted and gather to obtain the final result.
-In the present repo DIVA tool described in he aforementioned paper has
-been replaced by BIMAC.
+the survey year?). Finally through the HBIE tool,the results of the
+aforementioned tools are weighted and gather to obtain the final biomass
+index of missing hauls. In the present repo DIVA tool described in Coro
+et al. (2022) has been replaced by BIMAC.
 
 # Installation
 
@@ -29,11 +29,14 @@ been replaced by BIMAC.
 
 ## Data folders content (provided at installation)
 
-- Solea_solea.csv; HaulData.csv; StrataWeight.csv: example of input data
+- Solea_solea.csv; Sepia_officinalis.csv; Melicertus_keraturus.csv;
+  Squilla_mantis.csv; Pecten_jacobeus.csv; HaulData.csv;
+  StrataWeight.csv: example of input data
 - gebco_30sec_8.asc: world depth data needed for BIMAC computation. Do
   not remove, move or change this file.
 - Subfolder “Envirnmental inputs”: contains environmental variables of
   interest for MaxEnt tool. Data provided refers to the Adriatic Sea
+  from 2019 to 2022
 
 ## Data preparation guideline
 
@@ -69,6 +72,8 @@ where:
   consistent over the years
 
 - biomindex: biomass index of the station for the interested species
+
+- abunindex: abundance index of the station for the interested species
 
 ### missing_hauls.csv
 
@@ -119,7 +124,7 @@ where:
 - year: year of the survey during which the station was carried out.
   Need to include the interested year to be filled
 
-- SweptArea: Swept area of the station in nm2
+- SweptArea: Swept area of the station
 
 ### StrataWeight.csv
 
@@ -136,7 +141,7 @@ where:
 - Stratum: identifier of the stratum used for the computation of total
   biomass index of the area.
 
-- Area: Total area covered by each statum in nm2
+- Area: Total area covered by each stratum
 
 - StratumWeight: Weight of the stratum on the total surveyd area
 
@@ -254,7 +259,7 @@ library(dplyr) library(digest) library(sqldf)
 
 <!-- -->
 
-    ## [1] 2019 2020 2021
+    ## [1] 2019 2020 2021 2022
 
     -   Years have to be consistent with Environmental_inputs subfolders
 

@@ -1,6 +1,6 @@
 ---
 title: "Survey gaps"
-author: "A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella"
+author: "A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella,"
 date: "2023"
 output: github_document
 always_allow_html: true
@@ -19,9 +19,9 @@ Genus_species=read_csv("data/Solea_solea.csv")
 missing_hauls=read_csv("data/missing_hauls.csv")
 HaulData = read_csv("data/HaulData.csv")
 StrataWeight = read_csv("data/StrataWeight.csv")
-variable =raster("data/Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc")
+environmental_variable =raster("data/Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc")
 species = c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus")
-years = c(2019,2020,2021)
+years = c(2019,2020,2021,2022)
 
 ```
 
@@ -39,8 +39,7 @@ the mobility of the species?), the historical trends through SSA tool
 (what biomass do we expect in the missed hauls given the observation
 history?), the environmental aspect through MaxEnt tool (how
 inter-annual bio-geo-chemical change affect the species distribution in
-the survey year?). Finally through the HBIE tool, each of the three aforementioned steps are weighted and gather to obtain the final result. In the present repo DIVA tool described in he
-aforementioned paper has been replaced by BIMAC.
+the survey year?). Finally through the HBIE tool,the results of the aforementioned tools are weighted and gather to obtain the final biomass index of missing hauls. In the present repo DIVA tool described in Coro et al. (2022) has been replaced by BIMAC.
 
 # Installation
 
@@ -49,11 +48,11 @@ aforementioned paper has been replaced by BIMAC.
     
 ## Data folders content (provided at installation)
 
--   Solea_solea.csv; HaulData.csv; StrataWeight.csv: example of input data
+-   Solea_solea.csv; Sepia_officinalis.csv; Melicertus_keraturus.csv; Squilla_mantis.csv; Pecten_jacobeus.csv; HaulData.csv; StrataWeight.csv: example of input data
 -   gebco_30sec_8.asc: world depth data needed for BIMAC
     computation. Do not remove, move or change this file.
 -   Subfolder "Envirnmental inputs": contains environmental
-    variables of interest for MaxEnt tool. Data provided refers to the Adriatic Sea
+    variables of interest for MaxEnt tool. Data provided refers to the Adriatic Sea from 2019 to 2022
 
 ## Data preparation guideline
 
@@ -81,6 +80,8 @@ where:
   - species: name of the species in the preferred format. Needs to be consistent over the years
   
   - biomindex: biomass index of the station for the interested species
+  
+  - abunindex: abundance index of the station for the interested species
 
 ### missing_hauls.csv
 
@@ -118,7 +119,7 @@ where:
   
   - year: year of the survey during which the station was carried out. Need to include the interested year to be filled
   
-  - SweptArea: Swept area of the station in nm2
+  - SweptArea: Swept area of the station
 
 ### StrataWeight.csv
 
@@ -133,7 +134,7 @@ where:
 
   - Stratum: identifier of the stratum used for the computation of total biomass index of the area.
   
-  - Area: Total area covered by each statum in nm2 
+  - Area: Total area covered by each stratum  
   
   - StratumWeight: Weight of the stratum on the total surveyd area
 
@@ -142,9 +143,9 @@ where:
 Download the raster layer file in asc format for the interested environmental variables:
 
 ```{r, include=T, echo=FALSE}
-head(variable)
+head(environmental_variable)
 
-variable
+environmental_variable
 
 ```
 
