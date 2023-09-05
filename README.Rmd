@@ -179,7 +179,7 @@ where:
 
 # Executing code
 
-Run "Workflow_Surveygaps.R" in RStudio
+Open "Workflow_Surveygaps.R" in RStudio and set working directory to "source file location"
 
 ## Install and load required libraries
 
@@ -216,6 +216,8 @@ years
     -   Years have to be consistent with Environmental_inputs subfolders
 
 # Processing
+Run the code from "Source" 
+
 README WORK IN PROGRESS
 
 ## SSA, BIMAC and MaxEnt computation

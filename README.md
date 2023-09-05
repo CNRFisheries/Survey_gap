@@ -6,10 +6,10 @@ A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella,
 ## Overview
 
 This repo contains the workflow developed to fill trawl survey haul gaps
-based on the paper: [Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M
+based on the paper: “Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M
 and Scarcella G (2022) Filling Gaps in Trawl Surveys at Sea through
 Spatiotemporal and Environmental Modelling. Front. Mar. Sci. 9:919339.
-doi: 10.3389/fmars.2022.919339](https://www.frontiersin.org/articles/10.3389/fmars.2022.919339/full).
+doi: 10.3389/fmars.2022.919339”.
 
 The tool take into account the spatial mobility of the species through
 BIMAC tool (how far can a population go in one year and which is the
@@ -226,7 +226,8 @@ where:
 
 # Executing code
 
-Run “Workflow_Surveygaps.R” in RStudio
+Open “Workflow_Surveygaps.R” in RStudio and set working directory to
+“source file location”
 
 ## Install and load required libraries
 
@@ -264,6 +265,8 @@ library(dplyr) library(digest) library(sqldf)
     -   Years have to be consistent with Environmental_inputs subfolders
 
 # Processing
+
+Run the code from “Source”
 
 README WORK IN PROGRESS
 
