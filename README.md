@@ -29,9 +29,7 @@ et al. (2022) has been replaced by BIMAC.
 
 ## Data folders content (provided at installation)
 
-- Solea_solea.csv; Sepia_officinalis.csv; Melicertus_keraturus.csv;
-  Squilla_mantis.csv; Pecten_jacobeus.csv; HaulData.csv;
-  StrataWeight.csv: example of input data
+- Solea_solea.csv; HaulData.csv; StrataWeight.csv: example of input data
 - gebco_30sec_8.asc: world depth data needed for BIMAC computation. Do
   not remove, move or change this file.
 - Subfolder “Envirnmental inputs”: contains environmental variables of
