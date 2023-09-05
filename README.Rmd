@@ -20,7 +20,7 @@ missing_hauls=read_csv("data/missing_hauls.csv")
 HaulData = read_csv("data/HaulData.csv")
 StrataWeight = read_csv("data/StrataWeight.csv")
 environmental_variable =raster("data/Environmental_inputs/MaxEnt_2019/CHL_summer_2019.asc")
-species = c("Solea_solea","Sepia_officinalis", "Melicertus_keraturus", "Squilla_mantis", "Pecten_jacobeus")
+species = c("Solea_solea")
 years = c(2019,2020,2021,2022)
 
 ```

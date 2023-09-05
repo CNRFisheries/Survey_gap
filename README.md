@@ -5,7 +5,6 @@ A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella,
 
 ## Overview
 
-Check
 This repo contains the workflow developed to fill trawl survey haul gaps
 based on the paper: “Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M
 and Scarcella G (2022) Filling Gaps in Trawl Surveys at Sea through
@@ -254,8 +253,7 @@ library(dplyr) library(digest) library(sqldf)
 
 <!-- -->
 
-    ## [1] "Solea_solea"          "Sepia_officinalis"    "Melicertus_keraturus"
-    ## [4] "Squilla_mantis"       "Pecten_jacobeus"
+    ## [1] "Solea_solea"
 
     -   Terms of the species have to be consistent  with the file names in folder "data":
 
