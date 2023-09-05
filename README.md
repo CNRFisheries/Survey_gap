@@ -6,10 +6,10 @@ A. Palermino, G. Coro, P. Bove, E.N. Armelloni, G. Scarcella
 ## Overview
 
 This repo contains the workflow developed to fill trawl survey haul gaps
-based on the paper: “Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M
+based on the paper: [Coro G, Bove P, Armelloni EN, Masnadi F, Scanu M
 and Scarcella G (2022) Filling Gaps in Trawl Surveys at Sea through
 Spatiotemporal and Environmental Modelling. Front. Mar. Sci. 9:919339.
-doi: 10.3389/fmars.2022.919339”.
+doi: 10.3389/fmars.2022.919339](https://www.frontiersin.org/articles/10.3389/fmars.2022.919339/full).
 
 The tool take into account the spatial mobility of the species through
 BIMAC tool (how far can a population go in one year and which is the
