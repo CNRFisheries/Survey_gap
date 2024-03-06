@@ -20,14 +20,15 @@ inter-annual bio-geo-chemical change affect the species distribution in
 the survey year?). Finally through the HBIE tool,the results of the
 aforementioned tools are weighted and gather to obtain the final biomass
 index of missing hauls. In the present repo DIVA tool described in Coro
-et al. (2022) has been replaced by BIMAC.
+et al. (2022) has been replaced by BIMAC (Coro 2024;
+<https://doi.org/10.1016/j.envsoft.2023.105901>).
 
 # Installation
 
 - Download folder *“R”*, *“data”* and *“java”* and store them in a
   unique folder.
 
-## Data folders content (provided at installation)
+## Data folder content (provided at installation)
 
 - *Solea_solea.csv*; *HaulData.csv*; *StrataWeight.csv*: example of
   input data
@@ -162,7 +163,7 @@ where:
 - **extent**: extent of the map in longitude and latitude. Need to be
   consistent across all the environmental variables
 
-## Required data and folder after data preparation
+## Required data and folders for running the tool
 
 - Folder *“data”* containing: *missing_hauls.csv*, *Genus_species.csv*,
   *HaulData.csv*, *StrataWeight.csv*,
@@ -175,7 +176,7 @@ where:
   *Workflow_Surveygaps_Solemon.R* with species and year to be filled for
   Solemon survey
 - Folder *“java”* containing: Code *max_ent_cyb.jar* for MaxEnt
-  computations (DO NOT EDIT), code *“ssa.jar”* for SSA computations (DO
+  computations (DO NOT EDIT), code *ssa.jar* for SSA computations (DO
   NOT EDIT), folder *“cfg”* containing: *operators.xlm* for ssa
   computations (DO NOT EDIT)
 
@@ -230,8 +231,10 @@ Run the code from “Source”
 In this step several functions are applied to compute temporal, spatial
 and ecological tools. The results are stored for HBIE computation
 
-- Inputs are stored in folders named *“ssa_input”* by species and year
-- Output are stored in folders named *“ssa_output”* by species and year
+- Inputs are stored in folders named *“ssa_input”*, *“MaxEnt_input”* and
+  *“BIMAC_input”* by species and year
+- Output are stored in folders named *“ssa_output”*, *“MaxEnt_output”*
+  and *“BIMAC_output”* by species and year
 
 ## HBIE computation
 
@@ -240,8 +243,8 @@ results are pulled together and weighted to give the estimation of mean,
 low and high biomass index of missing hauls.
 
 - Inputs are stored in folder named *“hbie_input”* by species and year
-- Output are stored in folder named *“hbie_output”* by species and year.
-  The output csv file contain the final biomass index results per
+- Outputs are stored in folder named *“hbie_output”* by species and
+  year. The output csv file contain the final biomass index results per
   station in the column *biomass_est_mean*.
 
 ## Index computation
@@ -252,8 +255,9 @@ whole hauls including the filled missing hauls.
 
 - Inputs are stored in folder named *“biom_index_input”* by species and
   year
-- Output are stored in folder named *“biom_index_output”* by species and
-  year.
+- Outputs are stored in folder named *“biom_index_output”* by species
+  and year. The output csv file contain the final biomass index results
+  per area
 
 # Outputs and results
 
@@ -288,11 +292,14 @@ The main results are reported in:
 
 where:
 
-- **ecological** depicts the results of MaxEnt
-- **spatial** and **spetail_error** depict the results of BIMAC
-- **temporal** depicts the results of SSA
+- **ecological** depicts the results of MaxEnt provided in details in
+  MaxEnt folders
+- **spatial** and **spetail_error** depict the results of BIMAC provided
+  in details in BIMAC folders
+- **temporal** depicts the results of SSA provided in details in SSA
+  folders
 - **index_est_mean**, **index_est_low**, **index_est_high** depict the
-  results of hbie
+  results of HBIE
 
 **biomindex_output**
 
@@ -309,8 +316,8 @@ where:
 - **biomass_known** depicts the biomass computation from the known hauls
   (excluding the missing hauls)
 - **biomass_mean**, **biomass_mean**, **biomass_mean** depict the
-  biomass computations from the estimated and known hauls (including the
-  missing hauls)
+  biomass computations from the whole dataset (known hauls + missing
+  hauls)
 
 At the end of each run the *biomindex_outptut* table is shown along with
 a plot showing the index estimated per missing station (from
