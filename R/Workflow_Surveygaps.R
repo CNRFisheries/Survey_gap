@@ -1,3 +1,4 @@
+install.packages(setdiff(c("ggplot2","raster","sqldf","R2jags","coda","plyr","dplyr","digest"), rownames(installed.packages())))
 library(raster)
 library(sqldf)
 library(ggplot2)
