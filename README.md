@@ -24,15 +24,16 @@ et al. (2022) has been replaced by BIMAC.
 
 # Installation
 
-- Download folder “R”, “data” and “java” and store them in a unique
-  folder.
+- Download folder *“R”*, *“data”* and *“java”* and store them in a
+  unique folder.
 
 ## Data folders content (provided at installation)
 
-- Solea_solea.csv; HaulData.csv; StrataWeight.csv: example of input data
-- gebco_30sec_8.asc: world depth data needed for BIMAC computation. Do
+- *Solea_solea.csv*; *HaulData.csv*; *StrataWeight.csv*: example of
+  input data
+- *gebco_30sec_8.asc*: world depth data needed for BIMAC computation. Do
   not remove, move or change this file.
-- Subfolder “Envirnmental inputs”: contains environmental variables of
+- Subfolder *“Envirnmental inputs”*: contains environmental variables of
   interest for MaxEnt tool. Data provided refers to the Adriatic Sea
   from 2019 to 2022
 
@@ -163,25 +164,25 @@ where:
 
 ## Required data and folder after data preparation
 
-- Folder *“data”* containing: *“missing_hauls.csv”*,
-  *“Genus_species.csv”*, *“HaulData.csv”*, *“StrataWeight.csv”*,
+- Folder *“data”* containing: *missing_hauls.csv*, *Genus_species.csv*,
+  *HaulData.csv*, *StrataWeight.csv*,
 - Subfolder *“Environmental_inputs”* containing the asc files of
   environmental variables to be used for MaxEnt run each year, file
   *“gebco_30sec_8.asc”*: world depth data for BIMAC computations (DO NOT
   EDIT)
-- Folder *“R”* containing: Code *“BIMAC_no_advection.R”* for BIMAC
-  computations (DO NOT EDIT), code *“Workflow_Surveygaps.R”*, code
-  *“Workflow_Surveygaps_Solemon.R”* with species and year to be filled
-  for Solemon survey
-- Folder *“java”* containing: Code *“max_ent_cyb.jar”* for MaxEnt
+- Folder *“R”* containing: Code *BIMAC_no_advection.R* for BIMAC
+  computations (DO NOT EDIT), code *Workflow_Surveygaps.R*, code
+  *Workflow_Surveygaps_Solemon.R* with species and year to be filled for
+  Solemon survey
+- Folder *“java”* containing: Code *max_ent_cyb.jar* for MaxEnt
   computations (DO NOT EDIT), code *“ssa.jar”* for SSA computations (DO
-  NOT EDIT), folder *“cfg”* containing: *“operators.xlm”* for ssa
+  NOT EDIT), folder *“cfg”* containing: *operators.xlm* for ssa
   computations (DO NOT EDIT)
 
 # Executing code
 
-Open *“Workflow_Surveygaps.R”* in RStudio and set working directory to
-“source file location”. In *“Workflow_Surveygaps_Solemon.R”*, data are
+Open *Workflow_Surveygaps.R* in RStudio and set working directory to
+“source file location”. In *Workflow_Surveygaps_Solemon.R*, data are
 already selected for the unusable years (2005 and 2006) and hauls (“ms”
 and “bis”)
 
@@ -229,10 +230,8 @@ Run the code from “Source”
 In this step several functions are applied to compute temporal, spatial
 and ecological tools. The results are stored for HBIE computation
 
-- Inputs are stored in folders named “toolname_input” by species and
-  year
-- Output are stored in folders named “toolname_output” by species and
-  year
+- Inputs are stored in folders named *“ssa_input”* by species and year
+- Output are stored in folders named *“ssa_output”* by species and year
 
 ## HBIE computation
 
@@ -240,10 +239,10 @@ In this step the temporal (SSA), spatial (BIMAC) and ecological (MaxEnt)
 results are pulled together and weighted to give the estimation of mean,
 low and high biomass index of missing hauls.
 
-- Inputs are stored in folder named “hbie_input” by species and year
-- Output are stored in folder named “hbie_output” by species and year.
+- Inputs are stored in folder named *“hbie_input”* by species and year
+- Output are stored in folder named *“hbie_output”* by species and year.
   The output csv file contain the final biomass index results per
-  station in the column “biomass_est_mean”.
+  station in the column *biomass_est_mean*.
 
 ## Index computation
 
@@ -251,9 +250,9 @@ In this step the total index of the surveyed area is computed through
 the stratified mean method described in Coro et al. (2022) from the
 whole hauls including the filled missing hauls.
 
-- Inputs are stored in folder named “biom_index_input” by species and
+- Inputs are stored in folder named *“biom_index_input”* by species and
   year
-- Output are stored in folder named “biom_index_output” by species and
+- Output are stored in folder named *“biom_index_output”* by species and
   year.
 
 # Outputs and results
@@ -313,10 +312,10 @@ where:
   biomass computations from the estimated and known hauls (including the
   missing hauls)
 
-At the end of each run the biomindex_outptut table is shown along with a
-plot showing the index estimated per missing station (from hbie_output)
-and Area ( from biomindex_output). Both are stored in biomindex_output
-folder
+At the end of each run the *biomindex_outptut* table is shown along with
+a plot showing the index estimated per missing station (from
+*hbie_output*) and Area ( from *biomindex_output*). Both are stored in
+*“biomindex_output”* folder
 
 <figure>
 <img
