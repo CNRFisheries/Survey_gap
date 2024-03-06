@@ -261,8 +261,13 @@ whole hauls including the filled missing hauls.
 At the end of the run all inputs and outputs are stored in the following
 folder tree structure per species
 
-![Figure 1: folders tree
-structure](files://C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/folder_structure.png)
+<figure>
+<img
+src="C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/folder_structure.png"
+alt="Folder tree structure" />
+<figcaption aria-hidden="true">Folder tree structure</figcaption>
+</figure>
+
 The main results are reported in:
 
 **hbie_output**
@@ -315,8 +320,7 @@ folder
 
 <figure>
 <img
-src="files://C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png"
-alt="Figure 2: Example of final plot" />
-<figcaption aria-hidden="true">Figure 2: Example of final
-plot</figcaption>
+src="C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png"
+alt="Example of final plot" />
+<figcaption aria-hidden="true">Example of final plot</figcaption>
 </figure>

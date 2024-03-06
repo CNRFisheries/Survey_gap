@@ -225,7 +225,8 @@ In this step the total index of the surveyed area is computed through the strati
 
 At the end of the run all inputs and outputs are stored in the following folder tree structure per species
 
-![Figure 1: folders tree structure](files://C:/Users/a.palermino/OneDrive - CNR/github/Survey_gaps/folder_structure.png)
+![Folder tree structure](C:/Users/a.palermino/OneDrive - CNR/github/Survey_gaps/example_outputs/folder_structure.png)
+
 The main results are reported in:
 
 **hbie_output** 
@@ -252,4 +253,4 @@ where:
 
 At the end of each run the biomindex_outptut table is shown along with a plot showing the index estimated per missing station (from hbie_output) and Area ( from biomindex_output). Both are stored in biomindex_output folder
 
-![Figure 2: Example of final plot](files://C:/Users/a.palermino/OneDrive - CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png)
+![Example of final plot](C:/Users/a.palermino/OneDrive - CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png)
