@@ -262,12 +262,10 @@ At the end of the run all inputs and outputs are stored in the following
 folder tree structure per species
 
 ![Figure 1: folders tree
-structure](C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/folder_structure.png)
+structure](files://C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/folder_structure.png)
 The main results are reported in:
 
-- hbie_output
-
-<!-- -->
+**hbie_output**
 
     ##   station      lon      lat ecological  spatial  temporal spatialerror
     ## 1      30 13.95125 43.94125 0.05007590 40.00000  0.000000    15.737645
@@ -284,14 +282,15 @@ The main results are reported in:
     ## 5        9.50593      4.057252       14.95461
     ## 6       36.34643      6.893373       65.79948
 
-where: - **ecological** depicts the results of MaxEnt - **spatial** and
-**spetail_error** depict the results of BIMAC - **temporal** depicts the
-results of SSA - **index_est_mean**, **index_est_low**,
-**index_est_high** depict the results of hbie
+where:
 
-- biomindex_output
+- **ecological** depicts the results of MaxEnt
+- **spatial** and **spetail_error** depict the results of BIMAC
+- **temporal** depicts the results of SSA
+- **index_est_mean**, **index_est_low**, **index_est_high** depict the
+  results of hbie
 
-<!-- -->
+**biomindex_output**
 
     ## # A tibble: 4 × 2
     ##   method          biomindex
@@ -301,19 +300,22 @@ results of SSA - **index_est_mean**, **index_est_low**,
     ## 3 biomindex_low        65.2
     ## 4 biomindex_high       73.9
 
-where: - **biomass_known** depicts the biomass computation from the
-known hauls (excluding the missing hauls) - **biomass_mean**,
-**biomass_mean**, **biomass_mean** depict the biomass computations from
-the estimated and known hauls (including the missing hauls)
+where:
+
+- **biomass_known** depicts the biomass computation from the known hauls
+  (excluding the missing hauls)
+- **biomass_mean**, **biomass_mean**, **biomass_mean** depict the
+  biomass computations from the estimated and known hauls (including the
+  missing hauls)
 
 At the end of each run the biomindex_outptut table is shown along with a
 plot showing the index estimated per missing station (from hbie_output)
-and Area ( from biomindex_output). Both are also stored in
-biomindex_output folder
+and Area ( from biomindex_output). Both are stored in biomindex_output
+folder
 
 <figure>
 <img
-src="C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png"
+src="files://C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png"
 alt="Figure 2: Example of final plot" />
 <figcaption aria-hidden="true">Figure 2: Example of final
 plot</figcaption>
