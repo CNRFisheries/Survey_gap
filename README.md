@@ -264,8 +264,8 @@ folder tree structure per species
 <figure>
 <img
 src="C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/folder_structure.png"
-alt="Folder tree structure" />
-<figcaption aria-hidden="true">Folder tree structure</figcaption>
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
 </figure>
 
 The main results are reported in:
@@ -321,6 +321,6 @@ folder
 <figure>
 <img
 src="C:/Users/a.palermino/OneDrive%20-%20CNR/github/Survey_gaps/example_outputs/Solea_solea_final_plot_2021.png"
-alt="Example of final plot" />
-<figcaption aria-hidden="true">Example of final plot</figcaption>
+alt="alt text" />
+<figcaption aria-hidden="true">alt text</figcaption>
 </figure>
