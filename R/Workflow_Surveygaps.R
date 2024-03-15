@@ -359,7 +359,6 @@ for (specie in species){
    # Data preparation
    cat(paste0("\n","Run biomass calculator for year ", year,", ", specie,"\n"))
    biomass_calc<-data[which(data$year==year),]
-   biomass_calc_2<-subset[which(subset$year==year),]
    K_hauls<-biomass_calc[,c("station","lat","lon",index)]
    colnames(K_hauls)<-c("station","lat","lon",index)
    
