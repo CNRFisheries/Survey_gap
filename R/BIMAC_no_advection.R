@@ -13,7 +13,7 @@ library(digest)
 #ASC files definitions
 #punctual_data_file = "../data/solemon/BIMAC_2022_Solea_solea.csv"
 #solea<-read.csv("../data/other data/haul_location.csv", sep=";")
-punctual_data_file = paste0("../BIMAC_input/",specie_b,"/",year_b,"/",specie_b,"_hauls_year_", year_b,".csv")
+punctual_data_file = paste0("../BIMAC_input/",specie_b,"/",year_b,"/",specie_b,"_hauls_", year_b,".csv")
 #solea<-read.csv("../data/other data/haul_location.csv", sep=";")
 
 min_x_in_raster<-12#min(solea$lon)#-(2*resolution)
