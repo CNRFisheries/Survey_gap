@@ -251,6 +251,6 @@ where:
   - **biomass_known** depicts the biomass computation from the known hauls (excluding the missing hauls)
   - **biomass_mean**, **biomass_mean**, **biomass_mean**  depict the biomass computations from the whole dataset (known hauls +  missing hauls)
 
-At the end of each run the *biomindex_outptut* table is shown along with a plot showing the index estimated per missing station (from *hbie_output*) and Area ( from *biomindex_output*). Both are stored in *"biomindex_output"* folder
+At the end of each run the *biomindex_outptut* table is shown along with a plot showing the index estimated per missing station (from *hbie_output*) and Area ( from *biomindex_output*). Both are stored in *"biomindex_output"* folder and in the
 
 ![Example of final plot](https://github.com/CNRFisheries/Survey_gap/tree/main/example_outputs/Solea_solea_final_plot_2021.png)
